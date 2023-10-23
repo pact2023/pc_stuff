@@ -1,0 +1,72 @@
+INTRODUCTION
+=============
+
+Here are the instructions for interacting with TPMS. 
+
+
+REVIEWER PROFILES
+=================
+
+Your conference's reviewers need to have profiles on TPMS.
+
+Reviewers can create profiles by first registering here: 
+http://papermatching.cs.toronto.edu/webapp/profileBrowser/register/
+
+Reviewers can login to the system here:
+http://papermatching.cs.toronto.edu/webapp/profileBrowser/login/
+
+Once logged in reviewers populate their profiles by uploading their papers
+to it. 
+
+Uploading papers is pretty straightforward but just in case here's a nice
+video that details the step-by-step procedure (this was made by the MICCAI
+2017 PC): 
+https://www.youtube.com/watch?v=a2M_McpDNsc
+
+Alternatively conference organizers can populate reviewer profiles on
+their behalf. Please contact the TPMS maintainers for help with this. 
+
+
+DATA FOR TPMS
+=============
+
+Below I outline the three key pieces of information needed by TPMS to
+obtain reviewer-paper matchings.
+
+1) Reviewers. You provide TPMS with a list of reviewers. The reviewer list
+should be in csv file in the following format (one reviewer per line):
+Email,FirstName,LastName
+
+
+2) Papers. Once the deadline has passed you package and provide TPMS
+with all of the submissions, in pdf format. The simplest, given the
+size of that file, is probably for me to download that package from
+some server.
+
+ - papers should be given a numeric ID and files should be named:
+      paperID.pdf (e.g., paper134.pdf)
+
+Given 1) and 2), I can provide you with affinity scores in some suitable
+format (e.g., reviewer-paper-score triplets in a text file).  It should
+then be straight forward for you to factor in conflicts of interests and
+other desiderata to come up with assignments.
+
+
+3) Conflicts of interest (COI). Once the paper deadline has passed you provide
+TPMS with a list of COI in the following csv format:
+
+paperID, reviewerEmail
+
+e.g., 
+15, lcharlin@gmail.com
+
+
+4) Bids. If you do have bids we can also use them. You can simply transfer
+them in another file (in csv format with email,paperID,score). One thing
+is that bids are always pretty positively-biased. It would be useful to
+get negative bids from all reviewers.
+
+Assignments. We typically return reviewer-paper scores. We can also return
+assignments if you provide us with conflicts of interest and reviewer
+constraints. Reviewer constraints are: a) number of papers per reviewer
+(min and max); and b) number of reviewers per paper (min and max).

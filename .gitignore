@@ -1,0 +1,10 @@
+Papers/
+Web/
+*~
+*.log
+resends.csv
+pc_hotcrp.csv
+tpms_bids.csv
+tpms_conflicts.csv
+tpms_reviewers.csv
+hotcrp_assignments.csv

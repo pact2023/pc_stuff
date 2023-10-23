@@ -1,0 +1,73 @@
+Architecture:
+ - Processors
+ - Accelerators
+ - Memory hierarchy
+ - Cache coherence
+ - Interconnects
+ - Concurrency support
+ - Storage and I/O
+ - Distributed systems
+ - Reconfigurable computing
+ - Application-specific
+
+Compilers:
+ - Parallelization
+ - Parallel semantics and intermediate representations
+ - Optimization and code generation for parallelism
+ - Domain specific
+ - Runtime systems and middleware
+ - Memory hierarchy optimizations
+ - Dynamic translation and optimization
+
+Applications:
+ - Parallel algorithms and applications
+ - Architecture and application co-design
+ - Experimental studies
+ - Neuromorphic computing
+ - ML applied to parallel computing
+ -
+
+Other:
+ - Computational models for parallel computing
+ - Formal methods for correctness
+ - Secure computing systems
+ - Parallel languages
+ - Other
+
+# ----------------
+
+Architecture: Processors
+Architecture: Accelerators
+Architecture: Memory hierarchy
+Architecture: Cache coherence
+Architecture: Interconnects
+Architecture: Concurrency support
+Architecture: Storage and I/O
+Architecture: Distributed systems
+Architecture: Reconfigurable computing
+Architecture: Application specific
+Architecture: Domain specific
+Architecture: GPUs
+
+Compilers: Parallelization
+Compilers: Parallel semantics and intermediate representations
+Compilers: Optimization and code generation for parallelism
+Compilers: Domain specific
+Compilers: Runtime systems and middleware
+Compilers: Memory hierarchy optimizations
+Compilers: Dynamic translation and optimization
+
+Applications: Parallel algorithms and applications
+Applications: Architecture and application co-design
+Applications: Experimental studies
+Applications: Neuromorphic computing
+Applications: ML applied to parallel computing
+
+Computational models for parallel computing
+Formal methods for correctness
+Secure computing systems
+Parallel languages
+Quantum computing
+Machine learning
+Operating systems
+Other
