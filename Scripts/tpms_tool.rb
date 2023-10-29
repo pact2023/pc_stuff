@@ -14,10 +14,12 @@ $defaults = {
   :hotcrp_conflicts => 'pact23-pcconflicts.csv',
   :hotcrp_reviewers => 'pact23-pc.csv',
   :hotcrp_topics => 'pact32-topics.csv',
+  :hotcrp_reviews => 'pact23-reviews.csv',
   :tpms_assignments => 'pact23_assignments.csv',
   :tpms_bids => 'tpms_bids.csv',
   :tpms_conflicts => 'tpms_conflicts.csv',
   :tpms_reviewers => 'tpms_reviewers.csv',
+  :tpms_scores => 'tpms_scores.csv',
   :tpms_stats => 'pact23_assignments_rev_stats.txt',
 }
 
@@ -30,6 +32,7 @@ $options = {
   :log_output => STDOUT,
   :papers => false,
   :pc => false,
+  :scores => false,
 }
 
 $logger = Logger.new($options[:log_output])
@@ -62,6 +65,9 @@ OptionParser.new do |opts|
   end
   opts.on("-r", "--reviewers", "Dump PC members in TPMS format") do
     $options[:pc] = true
+  end
+  opts.on("-s", "--scores", "Dump reviewer self-assigned expertise scores") do
+    $options[:scores] = true
   end
   opts.on("--all", "Generate all TPMS files") do
     $options[:bids] = true
@@ -200,6 +206,22 @@ def assignPapers(round)
   csv.close()
 end
 
+def dumpReviewerScores()
+  csvfile = $defaults[:hotcrp_reviews]
+  $logger.info("reading reviews from #{csvfile}")
+  data = CSV.parse(File.read(csvfile), headers: true)
+  # header: paper,title,review,reviewername,email,Overall merit,Reviewer expertise,Paper summary,Artifact available,Artifacts functional,Results reproduced,Comments for authors,Comments for PC,Comments for PC Chair,Consider for best paper,Consider as poster
+  @tpms_header = ['paper ID', 'reviewer Email', 'reviewer expertise']
+  $logger.info("writing expertise scores to #{$defaults[:tpms_scores]}")
+  csv = CSV.open($defaults[:tpms_scores], 'wb')
+  csv << @tpms_header
+  data.each do |row|
+    # artifact evaluators do not have expertise
+    csv << [row['paper'], row['email'], row['Reviewer expertise']] if row['Reviewer expertise']
+  end
+  csv.close()
+end
+
 def main()
   if $options[:pc]
     @addresses = getEmails($options[:input])
@@ -211,6 +233,7 @@ def main()
   dumpConflicts() if $options[:conflicts]
   packagePapers(false) if $options[:papers]
   assignPapers('R1') if $options[:assign]
+  dumpReviewerScores() if $options[:scores]
 end
 
 main()
