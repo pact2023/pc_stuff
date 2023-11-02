@@ -10,8 +10,6 @@
 
 - [Mail](https://pact23.hotcrp.com/mail?q=&plimit=1&template=pc) to PC link
 
-### Emails
-
 ## Docs
 
 - [TPMS data export](Assignments/TPMS_data_export.txt)
